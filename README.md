@@ -41,16 +41,22 @@ Automated Machine Learning is the process of automating the time-consuming, iter
 The dataset had to be concatenated with previously removed target labels for setting into automl config.
 The number of cross-validations was set to 5.
 
-The best performing model thus obtained was "StackEnsemble" with an accuracy of 91.74%.
-
+The best performing model thus obtained was "LightGBMClassifier" with an accuracy of 91.74%. And some of the parameters optimized are:
+1. boosting_type='gbdt'
+2. learning_rate=0.1
+3. max_depth=-1
+4. min_child_samples=20,
+5. min_child_weight=0.001,
+    ...and many more.
 
 ## Pipeline comparison
 The accuracies obtained by the hyperdrive and automl pipelines are 90% and 91.74% respectively. 
-As expected, AutoML performed better as it compared 100s of models as well as hyperparameters to get the best model, on the other hand model was fixed as Logistic Regresssion in case of HyperDRive and thus only parameters wer tuned.
+As expected, AutoML performed better as it compared 100s of models as well as hyperparameters to get the best model, on the other hand model was fixed as Logistic Regresssion in case of HyperDrive and thus only parameters wer tuned.
 
 But another point to be noted is that HyperDrive run took less than a minutes to complete while AutoML run took approx 30 minutes, using the same Standard_DS3_V2 cluster. Thus we can say that HyperDRive pipeline provided pretty much good results in a very low span of time as compared to AutoML run.
 
+Also, Automl is highly efficient where as hyperdrive is resource intensive. AutoML can automtically detect and work itself with automatic
 
 ## Future work
-Another appraoch, to use automl first to get the best model and then use hyperdrive to tune the hyperparameters on that model can be obtained and the results can be compared to the individual accuracies. 
-Another thing that I would like to dig deep into is n_cross_validations used in AutoML and the Early Stopping Policy.
+Another appraoch, to use automl first to get the best model and then use hyperdrive to tune the hyperparameters on that model can be obtained and the results can be compared to the individual accuracies. This might lead to increase in accuracy of the model, but I'm not sure. Also 
+Another thing that I would like to dig deep into is n_cross_validations used in AutoML and the Early Stopping Policy by changing the parameters and then comparing parameters, as I'm not much familiar with these.
