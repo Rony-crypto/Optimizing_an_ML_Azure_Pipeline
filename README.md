@@ -42,12 +42,13 @@ The dataset had to be concatenated with previously removed target labels for set
 The number of cross-validations was set to 5.
 
 The best performing model thus obtained was "LightGBMClassifier" with an accuracy of 91.74%. And some of the parameters optimized are:
-1. boosting_type='gbdt'
-2. learning_rate=0.1
-3. max_depth=-1
-4. min_child_samples=20,
-5. min_child_weight=0.001,
+1. boosting_type='gbdt', Gradient boosted decision trees (GBDTs) are widely used in machine learning, and the output of current GBDT implementations is a single variable.
+2. learning_rate=0.1, Boosting learning rate.
+3. max_depth=-1, Maximum tree depth for base learners, <=0 means no limit.
+4. min_child_samples=20, Minimum number of data needed in a child (leaf).
+5. min_child_weight=0.001, Minimum sum of instance weight (hessian) needed in a child (leaf).
     ...and many more.
+For refernce and more information : https://lightgbm.readthedocs.io/en/latest/pythonapi/lightgbm.LGBMClassifier.html
 
 ## Pipeline comparison
 The accuracies obtained by the hyperdrive and automl pipelines are 90% and 91.74% respectively. 
@@ -58,5 +59,5 @@ But another point to be noted is that HyperDrive run took less than a minutes to
 Also, Automl is highly efficient where as hyperdrive is resource intensive. AutoML can automtically detect and work itself with automatic
 
 ## Future work
-Another appraoch, to use automl first to get the best model and then use hyperdrive to tune the hyperparameters on that model can be obtained and the results can be compared to the individual accuracies. This might lead to increase in accuracy of the model, but I'm not sure. Also 
-Another thing that I would like to dig deep into is n_cross_validations used in AutoML and the Early Stopping Policy by changing the parameters and then comparing parameters, as I'm not much familiar with these.
+Another appraoch, to use automl first to get the best model and then use hyperdrive to tune the hyperparameters on that model can be obtained and the results can be compared to the individual accuracies. This might lead to increase in accuracy of the model.
+Another thing that I would like to dig deep into is n_cross_validations used in AutoML. With this option, we divide our data into some number of folds and then build and test models on each fold. This method provides the best accuracy and can help find problems with the dataset. However, it takes longer to train. 
