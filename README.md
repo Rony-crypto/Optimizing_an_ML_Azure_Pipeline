@@ -48,7 +48,7 @@ The best performing model thus obtained was "LightGBMClassifier" with an accurac
 4. min_child_samples=20, Minimum number of data needed in a child (leaf).
 5. min_child_weight=0.001, Minimum sum of instance weight (hessian) needed in a child (leaf).
     ...and many more.
-For refernce and more information : https://lightgbm.readthedocs.io/en/latest/pythonapi/lightgbm.LGBMClassifier.html
+For reference and more information : https://lightgbm.readthedocs.io/en/latest/pythonapi/lightgbm.LGBMClassifier.html
 
 ## Pipeline comparison
 The accuracies obtained by the hyperdrive and automl pipelines are 90% and 91.74% respectively. 
